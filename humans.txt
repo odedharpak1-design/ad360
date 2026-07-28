@@ -1,0 +1,15 @@
+/* TEAM */
+Founder & Lead Consultant: Alina Dudelzon
+Partner: Oded Yosef Harpak
+Site: AD 360 - Guidance through separation, divorce & loss
+Contact: 052-4400082
+
+/* SITE */
+Last update: 2026/07/27
+Language: Hebrew (he), RTL
+Doctype: HTML5
+IDE: —
+Standards: HTML5, CSS3, WCAG 2.1 AA (targeted)
+
+/* THANKS */
+Fonts: Frank Ruhl Libre & Heebo (Google Fonts)

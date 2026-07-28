@@ -1,0 +1,5 @@
+# AD 360 - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ad360.global/sitemap.xml

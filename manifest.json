@@ -1,0 +1,42 @@
+{
+  "name": "AD ליווי 360 - אלינה דודלזון",
+  "short_name": "AD 360",
+  "description": "מעטפת ליווי מלאה בתהליכי פרידה, גירושין והתאלמנות: ליווי רגשי, ייעוץ כלכלי ומשפטי במקום אחד.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "he",
+  "dir": "rtl",
+  "background_color": "#F7F4ED",
+  "theme_color": "#18392B",
+  "icons": [
+    {
+      "src": "/assets/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
