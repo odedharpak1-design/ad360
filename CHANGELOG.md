@@ -3,6 +3,50 @@ All notable changes to the AD360 website are documented in this file.
 
 ## [Unreleased]
 
+### 2026-08-02 — Fix: "קביעת פגישה" nav button text wrapping
+
+**Type:** Bug fix / CSS only
+**Priority:** Low visual defect, no functional/tracking/SEO impact
+
+#### Summary
+The highlighted "קביעת פגישה" nav button could wrap onto two lines at certain
+desktop widths (reproduced consistently around ~1024px), making it visually
+inconsistent with the rest of the navigation. Root cause: the button had no
+`white-space: nowrap` or `flex-shrink: 0`, so the flex nav layout could compress
+it below its natural content width under specific viewport widths.
+
+While investigating, also found and fixed an 8px vertical misalignment between
+the button and the plain-text nav links, caused by `.nav-links` relying on the
+flex default `align-items: stretch` instead of an explicit `center`.
+
+#### Changed files
+- `index.html`
+  - `.nav-cta`: added `white-space: nowrap`, `flex-shrink: 0`, and
+    `display: inline-flex; align-items: center; justify-content: center;`
+    for reliable single-line rendering and vertical centering.
+  - `.nav-links > li:last-child`: added `flex-shrink: 0` so the button's
+    container doesn't get compressed by the flex layout.
+  - `.nav-links`: added explicit `align-items: center` (previously relied on
+    the flex default `stretch`, which caused the alignment issue above).
+
+#### Verification performed
+- Reproduced the original bug precisely at 1024px width (button measured
+  63×52px — wrapped to two lines) before applying the fix.
+- After the fix, verified single-line rendering (130×34px, no wrap) and 0px
+  vertical-center misalignment against sibling nav links at seven widths:
+  901, 1024, 1152, 1280, 1366, 1440, 1920px.
+- Confirmed no horizontal overflow introduced at any tested width.
+- Confirmed mobile hamburger menu behavior unchanged.
+- No other nav items, colors, fonts, or functionality touched.
+
+#### Impact
+- **Visual:** Button is slightly wider (only as wide as its single-line text
+  requires); same color, shape, hover animation. No other visual change.
+- **SEO / Analytics / GTM / Netlify:** None — CSS-only fix, no markup, text,
+  links, or tracking code changed.
+
+---
+
 ### 2026-07-28 — Google Tag Manager: complete site-wide installation
 
 **Type:** Technical / Tracking infrastructure

@@ -171,7 +171,7 @@
       margin-top: 3px;
     }
 
-    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a {
       color: rgba(247,244,237,0.8);
       text-decoration: none; font-size: 0.9rem; font-weight: 400;
@@ -185,7 +185,10 @@
       padding: 9px 22px; border-radius: 30px;
       font-weight: 600 !important; font-size: 0.88rem !important;
       transition: background 0.3s, transform 0.2s !important;
+      display: inline-flex !important; align-items: center; justify-content: center;
+      white-space: nowrap; flex-shrink: 0;
     }
+    .nav-links > li:last-child { flex-shrink: 0; }
     .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
 
     .menu-btn {
