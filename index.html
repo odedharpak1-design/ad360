@@ -839,10 +839,20 @@
     .article-modal {
       background: var(--white); border-radius: 22px;
       max-width: 680px; width: 100%; max-height: 85vh;
-      overflow-y: auto; padding: 40px 34px; position: relative;
+      position: relative; display: flex; flex-direction: column;
+    }
+    /* Progressive enhancement: dvh accounts for mobile browser chrome
+       (address bar show/hide) more accurately than vh where supported. */
+    @supports (max-height: 85dvh) {
+      .article-modal { max-height: 85dvh; }
+    }
+    .article-modal-scroll {
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain; min-height: 0;
+      padding: 40px 34px;
     }
     .article-modal-close {
-      position: absolute; top: 18px; left: 18px;
+      position: absolute; top: 18px; left: 18px; z-index: 1;
       width: 36px; height: 36px; border-radius: 50%;
       background: rgba(24,57,43,0.06); border: none; cursor: pointer;
       font-size: 1.1rem; color: var(--green-deep);
@@ -859,9 +869,15 @@
     @media (max-width: 700px) {
       .article-card { padding: 22px 20px; }
       .article-title { font-size: 1.05rem; }
-      .article-modal { padding: 30px 20px; max-height: 90vh; }
+      .article-modal { max-height: 90vh; }
+      .article-modal-scroll { padding: 30px 20px; }
       .article-modal-title { font-size: 1.15rem; }
       .article-modal-body { font-size: 0.9rem; }
+    }
+    @media (max-width: 700px) {
+      @supports (max-height: 90dvh) {
+        .article-modal { max-height: 90dvh; }
+      }
     }
 
     /* ─── CTA ─── */
@@ -1668,13 +1684,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </template>
 </section>
 
-<div class="article-modal-overlay" id="articleModalOverlay">
-  <div class="article-modal" id="articleModalContent" role="dialog" aria-modal="true" tabindex="-1">
-    <button type="button" class="article-modal-close" id="articleModalClose" aria-label="סגור">✕</button>
-    <div id="articleModalInner"></div>
-  </div>
-</div>
-
 <!-- ═══ TEAM ═══ -->
 <section class="team" id="team">
   <div class="section-header reveal">
@@ -1980,6 +1989,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </div>
 </footer>
 
+<!-- Modal overlay: kept as a sibling of the main content region (not a
+     descendant), and placed BEFORE the closing script tag intentionally.
+     - Sibling of main: when a modal opens, the main region is made `inert`
+       for accessibility -- if the modal lived inside it, the modal itself
+       would become inert (unscrollable/unclosable) along with everything else.
+     - Before the script tag: this is a synchronous, non-deferred script that
+       reads these elements via getElementById() as soon as the parser
+       reaches it. If this markup were placed after the script tag, the
+       elements would not exist in the DOM yet and every getElementById()
+       call would return null, silently disabling the modal entirely. -->
+<div class="article-modal-overlay" id="articleModalOverlay">
+  <div class="article-modal" id="articleModalContent" role="dialog" aria-modal="true" tabindex="-1">
+    <button type="button" class="article-modal-close" id="articleModalClose" aria-label="סגור">✕</button>
+    <div class="article-modal-scroll">
+      <div id="articleModalInner"></div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Mobile menu toggle
   const menuBtn = document.querySelector('.menu-btn');
@@ -2156,6 +2184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   const navLandmark = document.querySelector('nav');
   const footerLandmark = document.querySelector('footer');
   let lastFocusedArticleTrigger = null;
+  let savedScrollY = 0;
 
   if (articleOverlay && articleInner && articleContent && articleModalClose) {
     document.querySelectorAll('[data-article]').forEach(card => {
@@ -2163,13 +2192,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
         const templateId = card.getAttribute('data-article');
         const template = document.getElementById(templateId);
         if (!template) return;
+        savedScrollY = window.scrollY;
         articleInner.innerHTML = '';
         articleInner.appendChild(template.content.cloneNode(true));
         articleOverlay.classList.add('open');
         document.body.style.overflow = 'hidden';
         [mainLandmark, navLandmark, footerLandmark].forEach(el => el && el.setAttribute('inert', ''));
         lastFocusedArticleTrigger = card;
-        articleContent.focus();
+        articleContent.focus({ preventScroll: true });
       });
     });
 
@@ -2177,7 +2207,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       articleOverlay.classList.remove('open');
       document.body.style.overflow = '';
       [mainLandmark, navLandmark, footerLandmark].forEach(el => el && el.removeAttribute('inert'));
-      if (lastFocusedArticleTrigger) lastFocusedArticleTrigger.focus();
+      if (lastFocusedArticleTrigger) lastFocusedArticleTrigger.focus({ preventScroll: true });
+      // Explicit restore: focus changes around the inert toggle can nudge
+      // scroll position in some browsers, and the native "scroll focused
+      // element into view" behavior can apply on the next frame rather than
+      // synchronously -- so restore on the next frame to win that race.
+      requestAnimationFrame(() => window.scrollTo(0, savedScrollY));
     }
     articleModalClose.addEventListener('click', closeArticleModal);
     articleOverlay.addEventListener('click', (e) => {
