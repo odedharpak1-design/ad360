@@ -3,6 +3,90 @@ All notable changes to the AD360 website are documented in this file.
 
 ## [Unreleased]
 
+### 2026-08-02 — Legal pages: Privacy Policy rewrite + new Terms of Use page
+
+**Type:** Content + new page
+**Status:** ⚠️ Legal text drafted and integrated per approved plan, but still marked
+as draft on both pages (visible banner + `noindex` + "(טיוטה)" in title) pending
+your explicit **FINAL APPROVED** on the text itself, per your Part 6 instruction.
+
+#### Changed files
+- `privacy-policy.html` — content fully rewritten per the 10 requirements
+  (revised introduction wording, dated update line, voluntary-submission clause,
+  contact-permission clause, revised cookies clause, GA/GTM-only mention, new
+  "אבטחת מידע" section, expanded rights list, revised Netlify Forms clause,
+  revised contact clause). Same visual template as before (unchanged).
+- `index.html` — **footer only**: replaced plain-text "פרטיות | תנאים" with two
+  real links, "מדיניות פרטיות" → `privacy-policy.html` and "תנאי שימוש" →
+  `terms-of-use.html`. Added accessible link styling (previous plain-text
+  color would have failed contrast as an actual link: measured 2.16:1, now
+  4.6:1). Navigation itself was **not** touched, per instruction.
+
+#### New files
+- `terms-of-use.html` — new page, 10 sections, written specifically for AD360
+  (mediation, respectful separation, emotional support, financial guidance,
+  planning for a new chapter) — not generic boilerplate. Same header/footer/
+  typography/colors/spacing/responsive template as the Privacy Policy page.
+
+#### Verification performed
+- Single `<h1>` + 10 sequential `<h2>` sections confirmed on both pages.
+- Zero console/JS errors on both pages.
+- Zero horizontal overflow at mobile (390px) and desktop (1280px).
+- Confirmed the contact form's privacy-consent checkbox already linked to
+  `privacy-policy.html` (no change needed — was correct from the earlier
+  contact-form task).
+- Applied the same nav-button fix (see previous entry) to both legal pages,
+  since they carry their own local copy of the nav CSS — without this they
+  would have reproduced the same wrapping bug independently.
+
+#### Impact
+- **SEO:** Both legal pages carry `noindex` while in draft status (intentional
+  — will be reconsidered once approved for real publication). Homepage SEO
+  unaffected.
+- **Analytics/GTM/WhatsApp/design/nav:** Untouched, as required.
+
+---
+
+### 2026-08-02 — Contact form ("#contact-form") merged to production
+
+**Type:** Feature release
+**Status:** ✅ Final — approved after preview review
+
+#### Summary
+The premium Netlify Forms contact section — previously delivered and tested
+as a preview build — is now merged into production `index.html`.
+`PREVIEW_MODE` switched from `true` to `false`: the form now performs a real
+`fetch()` POST to Netlify instead of simulating success locally.
+
+#### Changed files
+- `index.html`:
+  - New `#contact-form` section (trust bar, 7 fields, Netlify Forms markup,
+    validation, success/error states, GTM success event) — same content as
+    the previously-reviewed preview build.
+  - Old `#contact` section's form removed; heading/subtext/note preserved;
+    replaced with a button linking to `#contact-form` (single lead form on
+    the page now, per your instruction).
+  - Hero CTA and the package-section CTA both redirected to `#contact-form`.
+  - New nav item "השאירו פרטים" added immediately before "קביעת פגישה"
+    (desktop + mobile).
+  - Dead JS for the removed old form deleted (no unused code left behind).
+
+#### Verification performed
+- Zero console/JS errors.
+- All field validation re-confirmed against the production file (required
+  fields, Israeli phone pattern, multi-checkbox "at least one," consent).
+- Confirmed real `fetch('/', ...)` code path is now active (`PREVIEW_MODE`
+  confirmed `false` in the shipped file).
+
+#### Impact
+- **SEO/GTM/GA4/WhatsApp:** Unaffected — GTM `dataLayer.push` still fires
+  only after confirmed submission success, unchanged from preview.
+- **Note:** actual end-to-end Netlify submission can only be confirmed once
+  this is live on Netlify infrastructure — this was already flagged during
+  the preview stage and hasn't changed.
+
+---
+
 ### 2026-08-02 — Fix: "קביעת פגישה" nav button text wrapping
 
 **Type:** Bug fix / CSS only

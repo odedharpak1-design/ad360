@@ -872,7 +872,6 @@
       color: #fff; margin-bottom: 16px; line-height: 1.25;
     }
     .cta-section p { color: rgba(247,244,237,0.6); font-size: 1.05rem; margin-bottom: 44px; line-height: 1.7; max-width: 520px; margin-right: auto; margin-left: auto; }
-    .cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto; }
     .cta-input {
       flex: 1; min-width: 200px; padding: 14px 20px; border-radius: 50px;
       border: 1px solid rgba(201,169,107,0.3); background: rgba(255,255,255,0.06);
@@ -897,6 +896,72 @@
     .form-status.error { color: #e6a3a3; }
     .form-status.success { color: #8fd19e; }
 
+    /* ─── CONTACT FORM SECTION (reuses .cta-section base: dark bg, heading, paragraph) ─── */
+    .contact-form-section .divider { margin-bottom: 4px; }
+
+    .trust-bar {
+      list-style: none; display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px 28px; max-width: 640px; margin: 0 auto 48px; padding: 0;
+    }
+    .trust-bar li {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(247,244,237,0.72); font-size: 0.85rem;
+    }
+    .trust-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; flex-shrink: 0;
+      border-radius: 50%; background: rgba(201,169,107,0.15); color: var(--gold-light);
+    }
+    .trust-icon svg { width: 11px; height: 11px; }
+
+    .contact-form-fields { max-width: 640px; margin: 0 auto; text-align: right; direction: rtl; }
+    .form-row { display: flex; gap: 16px; }
+    .form-row .form-field { flex: 1; }
+    .form-field { margin-bottom: 18px; }
+    .contact-form-fields label:not(.check-option):not(.consent-option):not(.radio-option) {
+      display: block; font-size: 0.85rem; color: rgba(247,244,237,0.75); margin-bottom: 6px;
+    }
+    .contact-form-fields .cta-input { width: 100%; border-radius: 14px; }
+    .contact-form-fields textarea.cta-input { resize: vertical; min-height: 96px; border-radius: 14px; font-family: 'Heebo', sans-serif; }
+    .field-hint { display: block; font-size: 0.75rem; color: rgba(247,244,237,0.58); margin-top: 5px; }
+    .field-error { color: #e6a3a3; font-size: 0.82rem; margin-top: 8px; min-height: 1.1em; }
+
+    .form-fieldset { border: none; padding: 0; margin: 0 0 22px; }
+    .form-fieldset legend {
+      font-size: 0.85rem; color: rgba(247,244,237,0.75); margin-bottom: 10px; padding: 0;
+      width: 100%;
+    }
+    .checkbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; }
+    .radio-row { display: flex; flex-wrap: wrap; gap: 18px; }
+    .check-option, .radio-option, .consent-option {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 0.9rem; color: rgba(247,244,237,0.85); cursor: pointer; line-height: 1.5;
+    }
+    .check-option input, .radio-option input, .consent-option input {
+      accent-color: var(--gold); width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px;
+      cursor: pointer;
+    }
+    .consent-option { margin-bottom: 28px; font-size: 0.82rem; color: rgba(247,244,237,0.65); }
+    .consent-option a { color: var(--gold-light); text-decoration: underline; }
+    .consent-option a:hover { color: var(--gold); }
+
+    .contact-submit-btn { width: 100%; padding: 16px; border-radius: 50px; font-size: 1rem; }
+    .contact-submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .form-success {
+      max-width: 520px; margin: 0 auto; text-align: center;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,107,0.3);
+      border-radius: 20px; padding: 40px 32px; color: #fff;
+      font-family: 'Frank Ruhl Libre', serif; font-size: 1.15rem; line-height: 1.8;
+    }
+    .form-success:focus { outline: none; }
+
+    @media (max-width: 700px) {
+      .trust-bar { flex-direction: column; align-items: center; gap: 12px; }
+      .form-row { flex-direction: column; gap: 0; }
+      .checkbox-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--green-dark);
@@ -916,6 +981,8 @@
     .footer-icon-svg { width: 16px; height: 16px; flex-shrink: 0; }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 0.8rem; color: rgba(247,244,237,0.25); }
+    .footer-legal-links a { color: rgba(247,244,237,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: var(--gold-light); text-decoration: underline; }
 
     /* ─── DIVIDER ─── */
     .divider { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 0; }
@@ -999,6 +1066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
     <li><a href="#articles">מאמרים</a></li>
     <li><a href="#team">הצוות</a></li>
     <li><a href="#comparison">יתרונות</a></li>
+    <li><a href="#contact-form">השאירו פרטים</a></li>
     <li><a href="#contact" class="nav-cta">קביעת פגישה</a></li>
   </ul>
   <button class="menu-btn" type="button" aria-label="פתיחת תפריט ניווט" aria-expanded="false" aria-controls="primary-nav-links">☰</button>
@@ -1019,7 +1087,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
     <h1>להיפרד <em>נכון</em><br>ולהתחיל <em>מחדש</em></h1>
     <p class="hero-sub">מעטפת רגשית, כלכלית, משפטית —<br>כי לא נשארים לבד בתהליך שמשנה חיים.</p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">קביעת פגישת היכרות ←</a>
+      <a href="#contact-form" class="btn-primary">קביעת פגישת היכרות ←</a>
       <a href="#paths" class="btn-secondary">למדו על המסלולים</a>
     </div>
   </div>
@@ -1658,7 +1726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <div class="package-feature reveal"><div class="package-feature-icon" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><div class="package-feature-text">מזעור נזקים</div></div>
       <div class="package-feature reveal"><div class="package-feature-icon" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21c8 0 12-6.5 12-14.5-8.5 0-14.5 4.5-14.5 12.9 0 1 .1 1.6.1 1.6"/><path d="M6 21c0-4.3 2.1-8.6 6.3-11.7"/></svg></div><div class="package-feature-text">התחלה חדשה</div></div>
     </div>
-    <a href="#contact" class="btn-primary reveal" style="font-size:1rem">קביעת פגישת היכרות ←</a>
+    <a href="#contact-form" class="btn-primary reveal" style="font-size:1rem">קביעת פגישת היכרות ←</a>
   </div>
 </section>
 
@@ -1766,6 +1834,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </section>
 -->
 
+<!-- ═══ CONTACT FORM (premium lead form — added as a preview build) ═══ -->
+<section class="cta-section contact-form-section" id="contact-form">
+  <div class="divider reveal">
+    <div class="divider-line"></div>
+    <span class="divider-gem">✦</span>
+    <div class="divider-line rev"></div>
+  </div>
+  <br>
+  <h2 class="reveal">בואו נתחיל בשיחה אחת.</h2>
+  <p class="reveal">לפעמים שיחה אחת רגועה, מקצועית ודיסקרטית יכולה לשנות את כל הדרך שבה ייראה המשך התהליך.<br>השאירו פרטים ונחזור אליכם בהקדם.</p>
+
+  <ul class="trust-bar reveal" aria-label="יתרונות יצירת קשר">
+    <li><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>שיחה ראשונית ללא התחייבות</li>
+    <li><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>דיסקרטיות מלאה וכבוד לכל הצדדים</li>
+    <li><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>חזרה אישית תוך יום עסקים אחד</li>
+  </ul>
+
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+        id="contact-form-el" class="contact-form-fields reveal" novalidate>
+    <input type="hidden" name="form-name" value="contact">
+    <p class="visually-hidden">
+      <label>אל תמלאו שדה זה: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+    </p>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="full_name">שם מלא *</label>
+        <input type="text" id="full_name" name="full_name" class="cta-input"
+               required autocomplete="name" aria-required="true">
+      </div>
+      <div class="form-field">
+        <label for="phone">מספר טלפון *</label>
+        <input type="tel" id="phone" name="phone" class="cta-input"
+               required autocomplete="tel" inputmode="tel"
+               aria-required="true" aria-describedby="phone-hint">
+        <span class="field-hint" id="phone-hint">לדוגמה: 050-1234567</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">כתובת דוא"ל</label>
+      <input type="email" id="email" name="email" class="cta-input" autocomplete="email">
+    </div>
+
+    <fieldset class="form-fieldset">
+      <legend>במה ניתן לסייע? *</legend>
+      <div class="checkbox-grid">
+        <label class="check-option"><input type="checkbox" name="assistance[]" value="פרידה וגירושין">פרידה וגירושין</label>
+        <label class="check-option"><input type="checkbox" name="assistance[]" value="ליווי כלכלי">ליווי כלכלי</label>
+        <label class="check-option"><input type="checkbox" name="assistance[]" value="אלמנים ואלמנות">אלמנים ואלמנות</label>
+        <label class="check-option"><input type="checkbox" name="assistance[]" value="פרק חדש">פרק חדש</label>
+        <label class="check-option"><input type="checkbox" name="assistance[]" value="אחר">אחר</label>
+      </div>
+      <p class="field-error" id="assistance-error" role="alert"></p>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+      <legend>מתי נוח שנחזור אליך?</legend>
+      <div class="radio-row">
+        <label class="radio-option"><input type="radio" name="preferred_time" value="שעות הבוקר">שעות הבוקר</label>
+        <label class="radio-option"><input type="radio" name="preferred_time" value="שעות הצהריים">שעות הצהריים</label>
+        <label class="radio-option"><input type="radio" name="preferred_time" value="שעות הערב">שעות הערב</label>
+      </div>
+    </fieldset>
+
+    <div class="form-field">
+      <label for="message">הודעה קצרה</label>
+      <textarea id="message" name="message" class="cta-input" rows="4"
+                placeholder="נשמח לשמוע בקצרה במה נוכל לעזור (אין צורך לפרט מידע רגיש)"></textarea>
+    </div>
+
+    <label class="consent-option">
+      <input type="checkbox" name="privacy_consent" id="privacy_consent" required aria-required="true">
+      <span>אני מאשר/ת את מסירת הפרטים לצורך יצירת קשר בהתאם ל<a href="privacy-policy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span>
+    </label>
+
+    <button type="submit" class="cta-submit contact-submit-btn">בואו נדבר</button>
+    <p class="form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="form-success" id="contact-form-success" tabindex="-1" role="status" aria-live="polite" hidden></div>
+</section>
+
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="contact">
   <div class="divider reveal">
@@ -1776,15 +1927,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   <br>
   <h2 class="reveal">מוכנים לעשות את הצעד?</h2>
   <p class="reveal">פגישת ההיכרות היא ללא עלות וללא התחייבות.<br>רק שיחה, בנינו ובאנושיות.</p>
-  <!-- TODO before launch: replace YOUR_FORM_ID with a real endpoint (e.g. Formspree/your CRM webhook) -->
-  <form class="cta-form reveal" id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-    <label for="cta-phone" class="visually-hidden">מספר טלפון</label>
-    <input type="tel" id="cta-phone" name="phone" class="cta-input" placeholder="מספר טלפון" dir="rtl"
-           required autocomplete="tel" inputmode="tel" pattern="[0-9\-+\s]{9,15}"
-           aria-describedby="cta-form-status">
-    <button type="submit" class="cta-submit">קביעת פגישה ←</button>
-    <p class="form-status" id="cta-form-status" role="status" aria-live="polite"></p>
-  </form>
+  <a href="#contact-form" class="btn-primary reveal">השאירו פרטים ←</a>
   <p class="cta-note reveal">נחזור אליכם תוך 24 שעות · שיחה ראשונה ללא עלות</p>
 </section>
 
@@ -1833,7 +1976,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 AD ליווי 360 — כל הזכויות שמורות</span>
-    <span class="footer-copy">פרטיות | תנאים</span>
+    <span class="footer-copy footer-legal-links"><a href="privacy-policy.html">מדיניות פרטיות</a> · <a href="terms-of-use.html">תנאי שימוש</a></span>
   </div>
 </footer>
 
@@ -1880,45 +2023,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // CTA form — real AJAX submission with accessible status messages
-  const leadForm = document.getElementById('lead-form');
-  if (leadForm) {
-    const leadInput = document.getElementById('cta-phone');
-    const leadBtn = leadForm.querySelector('.cta-submit');
-    const leadStatus = document.getElementById('cta-form-status');
-    leadForm.addEventListener('submit', function(e) {
+  // ═══ Contact form (#contact-form) ═══
+  // Submits via AJAX to Netlify Forms. PREVIEW_MODE is a safety switch: when
+  // true, submission is simulated locally instead of calling fetch() — used
+  // only during local preview/testing, since Netlify can't process forms
+  // outside of an actual Netlify deployment. Must stay false in production.
+  const PREVIEW_MODE = false;
+
+  const contactForm = document.getElementById('contact-form-el');
+  if (contactForm) {
+    const nameInput = document.getElementById('full_name');
+    const phoneInput = document.getElementById('phone');
+    const submitBtn = contactForm.querySelector('.contact-submit-btn');
+    const statusEl = document.getElementById('contact-form-status');
+    const assistanceError = document.getElementById('assistance-error');
+    const successEl = document.getElementById('contact-form-success');
+    const israeliPhonePattern = /^(0(5\d|[2-4]|[89]|7[0-24-9])-?\d{7}|\+972-?(5\d|[2-4]|[89]|7[0-24-9])-?\d{7})$/;
+    let isSubmitting = false;
+
+    function getCheckedValues(name) {
+      return Array.from(contactForm.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+    }
+
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!leadInput.value.trim() || !leadForm.checkValidity()) {
-        leadStatus.textContent = 'נא להזין מספר טלפון תקין';
-        leadStatus.className = 'form-status error';
-        leadInput.focus();
+      if (isSubmitting) return; // prevent duplicate submissions
+
+      // Reset previous error states
+      assistanceError.textContent = '';
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+
+      // Required-field validation (name, phone format, at least one assistance checkbox, consent)
+      let firstInvalid = null;
+
+      if (!nameInput.value.trim()) firstInvalid = firstInvalid || nameInput;
+
+      const phoneValue = phoneInput.value.trim();
+      if (!phoneValue || !israeliPhonePattern.test(phoneValue.replace(/\s/g, ''))) {
+        firstInvalid = firstInvalid || phoneInput;
+      }
+
+      const assistanceValues = getCheckedValues('assistance[]');
+      if (assistanceValues.length === 0) {
+        assistanceError.textContent = 'נא לבחור לפחות אפשרות אחת';
+        firstInvalid = firstInvalid || contactForm.querySelector('input[name="assistance[]"]');
+      }
+
+      if (!contactForm.querySelector('#privacy_consent').checked) {
+        firstInvalid = firstInvalid || contactForm.querySelector('#privacy_consent');
+      }
+
+      if (!contactForm.checkValidity() || firstInvalid) {
+        if (!nameInput.value.trim()) {
+          statusEl.textContent = 'נא למלא שם מלא';
+        } else if (!phoneValue || !israeliPhonePattern.test(phoneValue.replace(/\s/g, ''))) {
+          statusEl.textContent = 'נא להזין מספר טלפון ישראלי תקין';
+        } else if (assistanceValues.length === 0) {
+          statusEl.textContent = 'נא לבחור לפחות אפשרות אחת בשדה "במה ניתן לסייע"';
+        } else if (!contactForm.querySelector('#privacy_consent').checked) {
+          statusEl.textContent = 'יש לאשר את מדיניות הפרטיות כדי להמשיך';
+        } else {
+          statusEl.textContent = 'נא לבדוק את השדות המסומנים';
+        }
+        statusEl.className = 'form-status error';
+        (firstInvalid || contactForm).focus();
         return;
       }
-      const originalText = leadBtn.textContent;
-      leadBtn.disabled = true;
-      leadBtn.textContent = 'שולח...';
-      leadStatus.textContent = '';
-      leadStatus.className = 'form-status';
 
-      fetch(leadForm.action, {
-        method: 'POST',
-        body: new FormData(leadForm),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          leadBtn.textContent = '✓ קיבלנו! נחזור אליכם בקרוב';
-          leadStatus.textContent = 'הפרטים נשלחו בהצלחה. ניצור קשר בהקדם.';
-          leadStatus.className = 'form-status success';
-          leadForm.reset();
-        } else {
-          throw new Error('Submission failed');
-        }
-      }).catch(() => {
-        leadBtn.disabled = false;
-        leadBtn.textContent = originalText;
-        leadStatus.textContent = 'לא הצלחנו לשלוח. אפשר ליצור קשר ישיר בוואטסאפ בכפתור הירוק.';
-        leadStatus.className = 'form-status error';
-      });
+      // All valid — submit
+      const submittedName = nameInput.value.trim();
+      isSubmitting = true;
+      submitBtn.disabled = true;
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'שולח...';
+
+      function handleSuccess() {
+        // Hide form with a smooth fade animation, then show the success message
+        contactForm.style.transition = 'opacity 0.4s ease';
+        contactForm.style.opacity = '0';
+        setTimeout(() => {
+          contactForm.hidden = true;
+          successEl.hidden = false;
+          successEl.textContent = ''; // never innerHTML
+          const line1 = document.createElement('p');
+          line1.textContent = `שלום ${submittedName},`;
+          const line2 = document.createElement('p');
+          line2.textContent = 'תודה על השארת הפרטים.';
+          const line3 = document.createElement('p');
+          line3.textContent = 'נחזור אליך בהקדם.';
+          successEl.appendChild(line1);
+          successEl.appendChild(line2);
+          successEl.appendChild(line3);
+          successEl.focus();
+
+          // GTM event — fires ONLY after confirmed successful submission
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'contact_form_success', form_name: 'contact' });
+        }, 400);
+      }
+
+      function handleError() {
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        statusEl.textContent = 'אירעה שגיאה בשליחת הטופס. אפשר לנסות שוב, או ליצור קשר ישיר בוואטסאפ בכפתור הירוק.';
+        statusEl.className = 'form-status error';
+        // entered values are intentionally preserved (no form.reset() here)
+      }
+
+      if (PREVIEW_MODE) {
+        // Simulated Netlify response for local preview/testing only
+        setTimeout(handleSuccess, 700);
+      } else {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(contactForm)).toString()
+        }).then(response => {
+          if (response.ok) { handleSuccess(); } else { throw new Error('Submission failed'); }
+        }).catch(handleError);
+      }
     });
   }
 
