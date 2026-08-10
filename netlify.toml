@@ -1,0 +1,12 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/property-guide/thank-you"
+  to = "/property-guide/thank-you.html"
+  status = 200
+
+[[redirects]]
+  from = "/property-guide/guide.pdf"
+  to = "/property-guide/assets/downloads/ad360-madrich-chalukat-rechush-girushin.pdf"
+  status = 200
