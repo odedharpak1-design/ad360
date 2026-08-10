@@ -1,0 +1,602 @@
+/* ================================================
+   AD360 Landing Page — scoped design system
+   All rules are namespaced under .ad360-lp to avoid
+   any collision with the main site's global CSS.
+   ================================================ */
+
+@font-face { font-family: 'LPSerif'; src: url('fonts/FreeSerif.ttf') format('truetype'); font-weight: normal; }
+@font-face { font-family: 'LPSerif'; font-weight: bold; src: url('fonts/FreeSerifBold.ttf') format('truetype'); }
+@font-face { font-family: 'LPSans'; src: url('fonts/LiberationSans-Regular.ttf') format('truetype'); font-weight: normal; }
+@font-face { font-family: 'LPSans'; font-weight: bold; src: url('fonts/LiberationSans-Bold.ttf') format('truetype'); }
+
+.ad360-lp {
+  --lp-green: #173C35;
+  --lp-green-deep: #122F29;
+  --lp-green-soft: #E8EDE9; /* subtle light-green variant for alternating sections */
+  --lp-cream: #F7F3EA;
+  --lp-cream-panel: #EFE9DA;
+  --lp-gold: #B79A62;
+  --lp-gold-light: #D2B67F;
+  --lp-ink: #2B2B27;
+  --lp-ink-soft: #4A4A44;
+  --lp-cream-text: #F3EFE3;
+  --lp-cream-text-soft: #CFC6AE;
+  --lp-max: 1200px;
+
+  all: initial;
+  display: block;
+  font-family: 'LPSans', sans-serif;
+  direction: rtl;
+  color: var(--lp-ink);
+  background: var(--lp-cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.ad360-lp *{ box-sizing: border-box; }
+.ad360-lp img{ max-width: 100%; display: block; }
+.ad360-lp a{ color: inherit; text-decoration: none; }
+.ad360-lp button{ font-family: inherit; cursor: pointer; border: none; background: none; }
+.ad360-lp ul{ list-style: none; margin: 0; padding: 0; }
+.ad360-lp p{ margin: 0 0 4mm 0; }
+.ad360-lp section{ position: relative; }
+
+.ad360-lp .lp-wrap{
+  max-width: var(--lp-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- typography scale ---------- */
+.ad360-lp .lp-eyebrow{
+  font-family: 'LPSans';
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--lp-gold);
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+.ad360-lp .lp-eyebrow.on-dark{ color: var(--lp-gold-light); }
+
+.ad360-lp h1{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 1.4;
+  color: var(--lp-cream-text);
+  margin: 0 0 26px 0;
+}
+.ad360-lp h2{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--lp-green);
+  margin: 0 0 18px 0;
+}
+.ad360-lp h2.on-dark{ color: var(--lp-cream-text); }
+.ad360-lp h3{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--lp-green);
+  margin: 0 0 8px 0;
+}
+
+.ad360-lp .lp-body{
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--lp-ink);
+}
+.ad360-lp .lp-body.on-dark{ color: var(--lp-cream-text-soft); }
+.ad360-lp .lp-body.lg{ font-size: 17px; }
+
+.ad360-lp .lp-hairline{
+  width: 56px; height: 2px;
+  background: var(--lp-gold);
+  margin: 20px 0;
+}
+.ad360-lp .lp-hairline.center{ margin: 24px auto; }
+
+/* ---------- buttons ---------- */
+.ad360-lp .lp-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'LPSans';
+  font-weight: bold;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  min-height: 52px;
+}
+.ad360-lp .lp-btn-gold{
+  background: var(--lp-gold);
+  color: var(--lp-green-deep);
+}
+.ad360-lp .lp-btn-gold:hover{ background: var(--lp-gold-light); }
+.ad360-lp .lp-btn-outline{
+  border: 1.5px solid var(--lp-gold);
+  color: var(--lp-gold-light);
+  background: transparent;
+}
+.ad360-lp .lp-btn-outline:hover{ background: rgba(183,154,98,0.1); }
+.ad360-lp .lp-btn-full{ width: 100%; }
+
+/* ---------- header ---------- */
+.ad360-lp .lp-header{
+  background: var(--lp-green);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(183,154,98,0.25);
+}
+.ad360-lp .lp-header .lp-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ad360-lp .lp-header-logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ad360-lp .lp-header-logo img{ width: 40px; height: 40px; }
+.ad360-lp .lp-header-logo span{
+  font-family: 'LPSerif', serif;
+  font-size: 15px;
+  color: var(--lp-cream-text);
+  font-weight: bold;
+}
+.ad360-lp .lp-header-cta{
+  font-family: 'LPSans';
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--lp-green-deep);
+  background: var(--lp-gold);
+  padding: 10px 20px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* ---------- hero ---------- */
+.ad360-lp .lp-hero{
+  background: var(--lp-green);
+  background-image: radial-gradient(ellipse at 50% 0%, #1b463e 0%, var(--lp-green) 55%, var(--lp-green-deep) 100%);
+  padding: 52px 0 64px 0;
+}
+.ad360-lp .lp-hero-grid{
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 40px;
+  align-items: start;
+}
+.ad360-lp .lp-hero-intro{ align-self: start; padding-top: 74px; }
+.ad360-lp .lp-hero-right{ }
+
+.ad360-lp .lp-hero-kicker{
+  font-family: 'LPSans';
+  font-size: 15px;
+  color: var(--lp-gold-light);
+  margin-bottom: 16px;
+}
+.ad360-lp .lp-hero-sub{
+  font-size: 17px;
+  line-height: 2.05;
+  color: var(--lp-cream-text-soft);
+  margin-bottom: 0;
+  max-width: 500px;
+}
+.ad360-lp .lp-hero-sub p{ margin-bottom: 18px; }
+
+/* offer block now lives inside the right-hand card group, bridging cover + form */
+.ad360-lp .lp-hero-offer{
+  text-align: center;
+  padding: 0 8px 14px 8px;
+  border-bottom: 1px solid rgba(183,154,98,0.3);
+  margin-bottom: 14px;
+}
+.ad360-lp .lp-hero-offer-label{
+  font-size: 13px;
+  color: var(--lp-gold-light);
+  margin-bottom: 6px;
+}
+.ad360-lp .lp-hero-offer-title{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 19px;
+  color: var(--lp-cream-text);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.ad360-lp .lp-hero-offer-desc{
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--lp-cream-text-soft);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* hero right column: unified offer + mockup + form card group */
+.ad360-lp .lp-hero-right{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(183,154,98,0.22);
+  border-radius: 10px;
+  padding: 20px 24px 22px 24px;
+}
+.ad360-lp .lp-mockup{
+  position: relative;
+  width: 290px;
+  margin-bottom: 14px;
+}
+.ad360-lp .lp-mockup img{
+  border-radius: 4px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 2px 0 var(--lp-gold);
+}
+
+.ad360-lp .lp-form-card{
+  background: var(--lp-cream);
+  border-radius: 8px;
+  padding: 20px 24px 22px 24px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+.ad360-lp .lp-form-title{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--lp-green);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.ad360-lp .lp-field{ margin-bottom: 10px; }
+.ad360-lp .lp-field label{
+  display: block;
+  font-size: 13px;
+  color: var(--lp-ink-soft);
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.ad360-lp .lp-field input{
+  width: 100%;
+  font-family: 'LPSans';
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(23,60,53,0.2);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--lp-ink);
+  min-height: 46px;
+}
+.ad360-lp .lp-field input:focus{
+  outline: none;
+  border-color: var(--lp-gold);
+  box-shadow: 0 0 0 3px rgba(183,154,98,0.18);
+}
+.ad360-lp .lp-consent{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 10px 0;
+}
+.ad360-lp .lp-consent input{ margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; }
+.ad360-lp .lp-consent label{
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--lp-ink-soft);
+}
+.ad360-lp .lp-consent a{ color: var(--lp-green); text-decoration: underline; }
+.ad360-lp .lp-form-note{
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--lp-ink-soft);
+  margin-top: 12px;
+}
+
+/* ---------- form states: loading / error / success ---------- */
+.ad360-lp .lp-form-card[data-state="loading"] form{ opacity: 0.6; pointer-events: none; }
+.ad360-lp .lp-form-error{
+  display: none;
+  background: #FBEAEA;
+  border: 1px solid #D98C8C;
+  color: #8A2E2E;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  text-align: right;
+}
+.ad360-lp .lp-form-success{
+  text-align: center;
+  padding: 6px 2px 2px 2px;
+}
+.ad360-lp .lp-form-success-icon{
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--lp-green);
+  color: var(--lp-gold-light);
+  font-size: 24px;
+  line-height: 48px;
+  margin: 0 auto 14px auto;
+}
+.ad360-lp .lp-form-success-text{
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--lp-ink);
+  margin: 10px 0 20px 0;
+}
+.ad360-lp .lp-download-btn{ display: block; }
+.ad360-lp .lp-hp-field{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- sections ---------- */
+.ad360-lp .lp-section{ padding: 72px 0; }
+.ad360-lp .lp-section.cream{ background: var(--lp-cream); }
+.ad360-lp .lp-section.green-soft{ background: var(--lp-green-soft); }
+.ad360-lp .lp-section.dark{
+  background: var(--lp-green);
+  background-image: radial-gradient(ellipse at 50% 0%, #1b463e 0%, var(--lp-green) 55%, var(--lp-green-deep) 100%);
+}
+.ad360-lp .lp-section-head{
+  max-width: 640px;
+  margin: 0 auto 44px auto;
+  text-align: center;
+}
+.ad360-lp .lp-section-head.left{ text-align: right; margin: 0 0 36px 0; }
+.ad360-lp .lp-about-logo{
+  width: 64px; height: 64px;
+  margin: 0 auto 20px auto;
+  background: var(--lp-green);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* pull quote (matches PDF treatment) */
+.ad360-lp .lp-pullquote{
+  background: var(--lp-cream-panel);
+  border-right: 2px solid var(--lp-gold);
+  padding: 24px 28px;
+  margin: 32px 0;
+  max-width: 640px;
+}
+.ad360-lp .lp-pullquote p{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--lp-green);
+  margin: 0;
+}
+.ad360-lp .lp-pullquote-strong{
+  text-align: center;
+  border-right: none;
+  border-top: 2px solid var(--lp-gold);
+  border-bottom: 2px solid var(--lp-gold);
+  padding: 22px 28px;
+  max-width: 560px;
+  margin: 32px auto;
+}
+.ad360-lp .lp-pullquote-strong p.primary{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 23px;
+  color: var(--lp-green);
+  margin: 0 0 8px 0;
+}
+.ad360-lp .lp-pullquote-strong p.secondary{
+  font-family: 'LPSans';
+  font-weight: bold;
+  font-size: 15px;
+  color: #8A6E3E;
+  margin: 0;
+}
+
+/* "what's inside" list */
+.ad360-lp .lp-feature-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 40px;
+  margin: 32px 0;
+}
+.ad360-lp .lp-feature-item{
+  position: relative;
+  text-align: right;
+  direction: rtl;
+  padding-right: 34px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(23,60,53,0.12);
+}
+.ad360-lp .lp-feature-icon{
+  position: absolute;
+  right: 0; top: 1px;
+  width: 22px; height: 22px;
+}
+.ad360-lp .lp-feature-item span{
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lp-ink);
+}
+
+/* about / team */
+.ad360-lp .lp-team-row{
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+  margin: 40px 0;
+}
+.ad360-lp .lp-team-member{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.ad360-lp .lp-team-member img{
+  width: 152px; height: 152px;
+  border-radius: 50%;
+  border: 2px solid var(--lp-gold);
+  padding: 4px;
+  object-fit: cover;
+}
+.ad360-lp .lp-team-member .name{
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--lp-green);
+}
+
+.ad360-lp .lp-brandline{
+  text-align: center;
+  font-family: 'LPSerif', serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--lp-green);
+  margin-top: 36px;
+}
+
+/* final CTA */
+.ad360-lp .lp-final-cta{
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.ad360-lp .lp-final-list{
+  margin: 18px 0 8px 0;
+  font-family: 'LPSerif', serif;
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--lp-cream-text);
+}
+.ad360-lp .lp-final-offer{
+  margin: 24px 0 0 0;
+}
+.ad360-lp .lp-final-offer .lp-hero-offer-title{ font-size: 21px; }
+.ad360-lp .lp-final-offer .lp-hero-offer{ border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+/* responsive: mobile-first overrides collapse desktop grid */
+@media (max-width: 900px){
+  .ad360-lp .lp-hero-grid{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .ad360-lp .lp-hero-intro{ padding-top: 0; }
+  .ad360-lp .lp-hero{ padding: 24px 0 36px 0; }
+  .ad360-lp .lp-hero-kicker{ margin-bottom: 10px; }
+  .ad360-lp h1{ font-size: 26px; margin-bottom: 12px; }
+  .ad360-lp .lp-hero-sub p{ margin-bottom: 10px; }
+  .ad360-lp h2{ font-size: 23px; }
+  .ad360-lp .lp-feature-grid{ grid-template-columns: 1fr; }
+  .ad360-lp .lp-team-row{ flex-direction: column; align-items: center; gap: 28px; }
+  .ad360-lp .lp-section{ padding: 44px 0; }
+  .ad360-lp .lp-hero-right{ padding: 20px 16px 22px 16px; }
+  .ad360-lp .lp-hero-offer{ padding-bottom: 14px; margin-bottom: 14px; }
+  .ad360-lp .lp-mockup{ width: 210px; margin-bottom: 14px; }
+  .ad360-lp .lp-header-logo span{ font-size: 12px; }
+  .ad360-lp .lp-field{ margin-bottom: 10px; }
+  .ad360-lp .lp-form-card{ padding: 20px 18px 22px 18px; }
+
+  /* founder photos: side-by-side row on mobile, not stacked */
+  .ad360-lp .lp-team-row{
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+  .ad360-lp .lp-team-member img{ width: 118px; height: 118px; }
+  .ad360-lp .lp-team-member .name{ font-size: 14px; }
+
+  /* final CTA button: keep prominent but fit mobile width */
+  .ad360-lp .lp-btn-final{ padding: 18px 32px; font-size: 16px; }
+}
+
+/* ---------- desktop-only: increase "מי אנחנו" presence ---------- */
+@media (min-width: 901px){
+  #lp-about{ padding: 64px 0; }
+  #lp-about .lp-about-logo{ width: 72px; height: 72px; margin-bottom: 16px; }
+  #lp-about h2{ font-size: 33px; }
+  #lp-about .lp-section-head{ margin-bottom: 32px; }
+  #lp-about .lp-about-copy{ max-width: 760px; }
+  #lp-about .lp-about-copy p{ font-size: 17.5px; line-height: 1.8; margin-bottom: 14px; }
+  #lp-about .lp-pullquote-strong{ max-width: 620px; margin: 26px auto; padding: 24px 32px; }
+  #lp-about .lp-pullquote-strong p.primary{ font-size: 25px; }
+  #lp-about .lp-pullquote-strong p.secondary{ font-size: 16px; }
+  #lp-about .lp-team-row{ margin: 32px 0; gap: 64px; }
+  #lp-about .lp-team-member img{ width: 172px; height: 172px; }
+  #lp-about .lp-team-member .name{ font-size: 17px; }
+  #lp-about .lp-brandline{ font-size: 21px; margin-top: 30px; }
+}
+
+/* ---------- enhanced prominence for the Final CTA button ---------- */
+.ad360-lp .lp-btn-final{
+  padding: 20px 44px;
+  font-size: 17px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(183,154,98,0.35);
+}
+.ad360-lp .lp-btn-final:hover{
+  box-shadow: 0 12px 34px rgba(0,0,0,0.45), 0 0 0 1px rgba(183,154,98,0.5);
+}
+
+/* ---------- standalone thank-you page ---------- */
+.ad360-lp .lp-thankyou{
+  min-height: 100vh;
+  background: var(--lp-green);
+  background-image: radial-gradient(ellipse at 50% 0%, #1b463e 0%, var(--lp-green) 55%, var(--lp-green-deep) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.ad360-lp .lp-thankyou-card{
+  background: var(--lp-cream);
+  border-radius: 10px;
+  max-width: 480px;
+  width: 100%;
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+.ad360-lp .lp-thankyou-logo{
+  width: 56px; height: 56px;
+  margin: 0 auto 22px auto;
+  background: var(--lp-green);
+  border-radius: 50%;
+  padding: 8px;
+}
+.ad360-lp .lp-thankyou-icon{
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--lp-green);
+  color: var(--lp-gold-light);
+  font-size: 28px;
+  line-height: 56px;
+  margin: 0 auto 20px auto;
+}
+.ad360-lp .lp-thankyou-card h1{
+  font-size: 26px;
+  color: var(--lp-green);
+  margin-bottom: 16px;
+}
+.ad360-lp .lp-thankyou-card p{
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--lp-ink);
+  margin-bottom: 26px;
+}
+@media (max-width: 500px){
+  .ad360-lp .lp-thankyou-card{ padding: 32px 24px; }
+  .ad360-lp .lp-thankyou-card h1{ font-size: 22px; }
+}
