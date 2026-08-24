@@ -6,6 +6,9 @@
 <title>תודה, המדריך שלכם מוכן | AD360</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
 <!-- Google Tag Manager -->
 <script>
@@ -21,6 +24,209 @@ f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TQXBNP52');
 </script>
 <!-- End Google Tag Manager -->
+
+<style>
+  /* ==========================================================
+     Funnel-continuation section (added below the existing
+     thank-you card). Namespaced under .ty-next- to avoid any
+     collision with classes in assets/style.css.
+     ========================================================== */
+  .ty-next {
+    --green: #18392B;
+    --gold: #C9A96B;
+    --cream: #F5F0E6;
+    font-family: 'Heebo', sans-serif;
+  }
+
+  .ty-next * { box-sizing: border-box; }
+
+  .ty-next-divider {
+    background: var(--green);
+    padding: 0 24px 56px;
+  }
+  .ty-next-divider-line {
+    max-width: 200px;
+    height: 2px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .ty-next-section {
+    background: var(--cream);
+    padding: 64px 24px 80px;
+  }
+
+  .ty-next-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ty-next-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.6vw, 36px);
+    line-height: 1.3;
+    color: var(--green);
+    margin: 0 0 26px;
+  }
+
+  .ty-next-copy {
+    max-width: 680px;
+    margin: 0 auto 52px;
+  }
+
+  .ty-next-copy p {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: clamp(15.5px, 1.9vw, 18px);
+    line-height: 1.9;
+    color: var(--green);
+    opacity: .88;
+    margin: 0 0 16px;
+  }
+
+  .ty-next-copy p:last-child { margin-bottom: 0; }
+
+  .ty-next-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+    text-align: right;
+  }
+
+  .ty-next-step {
+    background: #FFFFFF;
+    border: 1px solid rgba(201,169,107,.3);
+    border-radius: 16px;
+    padding: 30px 24px;
+  }
+
+  .ty-next-step.is-emphasis {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .ty-next-step-label {
+    display: inline-block;
+    font-family: 'Heebo', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .ty-next-step-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--green);
+    margin: 0 0 12px;
+  }
+
+  .ty-next-step.is-emphasis .ty-next-step-title { color: #FFFFFF; }
+
+  .ty-next-step-desc {
+    font-family: 'Heebo', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--green);
+    opacity: .85;
+    margin: 0;
+  }
+
+  .ty-next-step.is-emphasis .ty-next-step-desc {
+    color: var(--cream);
+    opacity: .92;
+  }
+
+  .ty-next-step-highlight {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(201,169,107,.16);
+    border: 1px solid rgba(201,169,107,.4);
+    color: var(--gold);
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  .ty-next-closing {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.6vw, 26px);
+    color: var(--green);
+    margin: 0;
+  }
+
+  .ty-next-closing .gold { color: var(--gold); }
+
+  .ty-next-cta {
+    max-width: 680px;
+    margin: 52px auto 0;
+    padding-top: 44px;
+    border-top: 1px solid rgba(24,57,43,.14);
+    text-align: center;
+  }
+
+  .ty-next-cta-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(19px, 2.4vw, 24px);
+    color: var(--green);
+    margin: 0 0 16px;
+  }
+
+  .ty-next-cta-copy {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    line-height: 1.85;
+    color: var(--green);
+    opacity: .85;
+    margin: 0 0 28px;
+  }
+
+  .ty-next-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: #FFFFFF;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 15px 36px;
+    border-radius: 999px;
+    border: 1px solid var(--green);
+    transition: background .18s ease, color .18s ease, transform .18s ease;
+  }
+
+  .ty-next-cta-btn:hover, .ty-next-cta-btn:focus-visible {
+    background: transparent;
+    color: var(--green);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 760px) {
+    .ty-next-divider { padding: 0 20px 44px; }
+    .ty-next-section { padding: 52px 20px 64px; }
+    .ty-next-copy { margin-bottom: 40px; }
+    .ty-next-steps {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .ty-next-step { padding: 24px 20px; }
+    .ty-next-cta { margin-top: 40px; padding-top: 32px; }
+    .ty-next-cta-btn { width: 100%; justify-content: center; }
+  }
+</style>
 
 </head>
 <body style="margin:0;">
@@ -48,6 +254,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <div class="lp-form-note" style="margin-top:14px;">הקובץ ייפתח בכרטיסייה חדשה.</div>
     </div>
   </div>
+
+  <!-- ===================== Funnel continuation ===================== -->
+  <div class="ty-next">
+
+    <div class="ty-next-divider">
+      <div class="ty-next-divider-line"></div>
+    </div>
+
+    <section class="ty-next-section">
+      <div class="ty-next-inner">
+        <h2 class="ty-next-title">אבל הדרך לא מסתיימת בחתימה על ההסכם.</h2>
+
+        <div class="ty-next-copy">
+          <p>הסכם גירושין נכון לא נועד רק לסיים את הפרק הקיים. הוא צריך גם ליצור בסיס נכון לפרק הבא.</p>
+          <p>לכן ב-AD360 אנחנו לא מסתכלים רק על הדרך להגיע להסכם, אלא גם על החיים שמתחילים אחריו.</p>
+        </div>
+
+        <div class="ty-next-steps">
+          <div class="ty-next-step">
+            <span class="ty-next-step-label">שלב ראשון</span>
+            <h3 class="ty-next-step-title">לפני ההסכם</h3>
+            <p class="ty-next-step-desc">יוצרים בהירות, מבינים את הצרכים ורואים את התמונה המלאה.</p>
+          </div>
+          <div class="ty-next-step">
+            <span class="ty-next-step-label">שלב שני</span>
+            <h3 class="ty-next-step-title">בדרך להסכם</h3>
+            <p class="ty-next-step-desc">מתמודדים עם המחלוקות ובונים הסכמות רגשיות, כלכליות ומשפטיות.</p>
+          </div>
+          <div class="ty-next-step is-emphasis">
+            <span class="ty-next-step-label">שלב שלישי</span>
+            <h3 class="ty-next-step-title">אחרי ההסכם</h3>
+            <p class="ty-next-step-desc">
+              במסלול המלא של AD360 אנחנו ממשיכים אתכם בליווי אישי במשך שנה לאחר הגירושין, כדי לסייע במעבר מההסכם לחיים החדשים.
+            </p>
+            <span class="ty-next-step-highlight">ליווי אישי למשך שנה שלמה</span>
+          </div>
+        </div>
+
+        <p class="ty-next-closing">אנחנו <span class="gold">לא נפרדים מכם</span> כשאתם נפרדים.</p>
+
+        <div class="ty-next-cta">
+          <h3 class="ty-next-cta-title">רוצים להכיר את מסלול הליווי המלא שלנו?</h3>
+          <p class="ty-next-cta-copy">
+            במסלול המעטפת המלאה של AD360 אנחנו מלווים אתכם מהפרידה, דרך בניית ההסכם, ועד לחיים שאחריו — כולל ליווי אישי ותמיכה במהלך השנה הראשונה לאחר הפרידה.
+          </p>
+          <a class="ty-next-cta-btn" href="https://www.ad360.global/" target="_blank" rel="noopener noreferrer">
+            הכירו את מסלול המעטפת המלאה
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- ================= End funnel continuation ================= -->
+
 </div>
 
 <script>
