@@ -113,6 +113,10 @@
             lead_magnet: "property_guide",
             form_location: "hero",
           });
+if (typeof fbq === "function") {
+  fbq("track", "Lead");
+}
+          
           renderSuccess(card, PDF_URL);
         })
         .catch(function () {
