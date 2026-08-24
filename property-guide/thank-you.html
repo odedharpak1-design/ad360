@@ -226,6 +226,72 @@ f.parentNode.insertBefore(j,f);
     .ty-next-cta { margin-top: 40px; padding-top: 32px; }
     .ty-next-cta-btn { width: 100%; justify-content: center; }
   }
+
+  /* ==========================================================
+     Scroll-cue (added directly below the existing download
+     note, inside .lp-thankyou-card). Fully self-contained /
+     namespaced under .ty-scrollcue- so it cannot collide with
+     anything in assets/style.css.
+     ========================================================== */
+  .ty-scrollcue {
+    --green: #18392B;
+    --gold: #C9A96B;
+    --cream: #F5F0E6;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(24,57,43,.12);
+    text-align: center;
+    font-family: 'Heebo', sans-serif;
+  }
+
+  .ty-scrollcue-eyebrow {
+    margin: 0 0 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--green);
+    opacity: .75;
+  }
+
+  .ty-scrollcue-text {
+    margin: 0 0 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--green);
+    opacity: .9;
+  }
+
+  .ty-scrollcue-hint {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ty-scrollcue-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    color: var(--gold);
+  }
+
+  .ty-scrollcue-arrow {
+    color: var(--gold);
+    animation: ty-scrollcue-bounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes ty-scrollcue-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ty-scrollcue-arrow { animation: none; }
+  }
+
+  @media (max-width: 760px) {
+    .ty-scrollcue { margin-top: 22px; padding-top: 16px; }
+    .ty-scrollcue-text { font-size: 14.5px; }
+  }
 </style>
 
 </head>
@@ -252,6 +318,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
          id="ty-download-btn"
          download target="_blank" rel="noopener">הורידו את המדריך</a>
       <div class="lp-form-note" style="margin-top:14px;">הקובץ ייפתח בכרטיסייה חדשה.</div>
+
+      <div class="ty-scrollcue">
+        <p class="ty-scrollcue-eyebrow">רגע לפני שאתם ממשיכים — יש עוד דבר חשוב שכדאי לדעת</p>
+        <p class="ty-scrollcue-text">
+          מה שקורה אחרי ההסכם חשוב לא פחות מהדרך שמובילה אליו.
+        </p>
+        <div class="ty-scrollcue-hint">
+          <span class="ty-scrollcue-label">המשיכו לגלול</span>
+          <svg class="ty-scrollcue-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4v15M12 19l-6-6M12 19l6-6"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -299,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
           <p class="ty-next-cta-copy">
             במסלול המעטפת המלאה של AD360 אנחנו מלווים אתכם מהפרידה, דרך בניית ההסכם, ועד לחיים שאחריו — כולל ליווי אישי ותמיכה במהלך השנה הראשונה לאחר הפרידה.
           </p>
-          <a class="ty-next-cta-btn" href="https://www.ad360.global/#full-support" target="_blank" rel="noopener noreferrer">
+          <a class="ty-next-cta-btn" href="https://www.ad360.global/" target="_blank" rel="noopener noreferrer">
             הכירו את מסלול המעטפת המלאה
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
