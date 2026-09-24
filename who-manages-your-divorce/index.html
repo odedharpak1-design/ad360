@@ -736,7 +736,7 @@
           <div class="field">
             <label for="callback">זמן נוח לחזרה</label>
             <select id="callback" name="callback">
-              <option value="">אין העדפה</option>
+              <option value="אין העדפה">אין העדפה</option>
               <option>בוקר</option>
               <option>צהריים</option>
               <option>אחר הצהריים</option>
@@ -748,7 +748,7 @@
               <label class="choice"><input type="radio" name="meeting" value="מרכז"> באזור המרכז</label>
               <label class="choice"><input type="radio" name="meeting" value="צפון"> באזור הצפון</label>
               <label class="choice"><input type="radio" name="meeting" value="מקוון"> באופן מקוון</label>
-              <label class="choice"><input type="radio" name="meeting" value="לא החלטתי"> עדיין לא החלטתי</label>
+              <label class="choice"><input type="radio" name="meeting" value="לא החלטתי" checked> עדיין לא החלטתי</label>
             </div>
           </fieldset>
           <div class="registration-notice">בהרשמתך את מאשרת קבלת דיוור מ AD ליווי 360 במייל, SMS או ווטס אפ. תוכלי להסיר את עצמך בכל עת בלחיצת כפתור פשוטה.</div>
@@ -852,10 +852,12 @@
       submitButton.textContent = "שולחת...";
 
       try {
-        const response = await fetch("/", {
+        const formData = new URLSearchParams(new FormData(form));
+        formData.set("form-name", form.name);
+        const response = await fetch(window.location.pathname, {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(new FormData(form)).toString()
+          body: formData.toString()
         });
 
         if (!response.ok) throw new Error("Submission failed");
