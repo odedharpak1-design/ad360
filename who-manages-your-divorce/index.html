@@ -700,7 +700,9 @@
           <div class="privacy-note"><span class="lock" aria-hidden="true">✓</span><span>אין צורך למסור בטופס מידע אישי או רגיש על הפרידה, הילדים, המצב הרגשי, הרכוש או ההליך המשפטי.</span></div>
           <a class="community-link" href="https://katzr.net/953e31" target="_blank" rel="noopener">לעוד עדכונים ולמידה משותפת הצטרפי לקהילה שלנו בווטסאפ</a>
         </div>
-        <form class="form-card" id="lead-form" novalidate>
+        <form class="form-card" id="lead-form" name="holiday-campaign" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="holiday-campaign">
+          <p hidden><label>אין למלא שדה זה: <input name="bot-field"></label></p>
           <div class="error" id="form-error" role="alert">כדי שנוכל לחזור אלייך, יש להשלים את השדות המסומנים.</div>
           <div class="field">
             <label for="first-name">שם פרטי <span class="required">*</span></label>
@@ -819,19 +821,41 @@
     const thankYou = document.getElementById("thank-you");
     const footer = document.querySelector("footer");
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.checkValidity()) {
+        formError.textContent = "כדי שנוכל לחזור אלייך, יש להשלים את השדות המסומנים.";
         formError.classList.add("show");
         form.reportValidity();
         return;
       }
       formError.classList.remove("show");
-      landing.hidden = true;
-      footer.hidden = true;
-      thankYou.classList.add("visible");
-      thankYou.focus();
-      window.scrollTo({ top: 0, behavior: "instant" });
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = "שולחת...";
+
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(form)).toString()
+        });
+
+        if (!response.ok) throw new Error("Submission failed");
+
+        form.reset();
+        landing.hidden = true;
+        footer.hidden = true;
+        thankYou.classList.add("visible");
+        thankYou.focus();
+        window.scrollTo({ top: 0, behavior: "instant" });
+      } catch (error) {
+        formError.textContent = "השליחה לא הושלמה. אנא נסי שוב או פני אלינו באמצעות כפתור הווטסאפ.";
+        formError.classList.add("show");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "אני רוצה לבדוק התאמה";
+      }
     });
 
     document.getElementById("back-to-page").addEventListener("click", () => {
