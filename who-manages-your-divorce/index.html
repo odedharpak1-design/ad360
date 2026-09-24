@@ -8,6 +8,23 @@
   <meta name="theme-color" content="#103d32">
   <title>מה מנהל את הגירושין שלך? | AD ליווי 360</title>
   <meta name="description" content="מסלול אישי־רגשי לנשים השוקלות פרידה או נמצאות בתהליך גירושין. מפת 360 לצעד הבא ושיחת היכרות אישית ודיסקרטית.">
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1071134959137260');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1071134959137260&amp;ev=PageView&amp;noscript=1"
+  ></noscript>
+  <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Noto+Serif+Hebrew:wght@500;600;700&display=swap" rel="stylesheet">
@@ -842,6 +859,9 @@
         });
 
         if (!response.ok) throw new Error("Submission failed");
+
+        // A Lead is counted only after Netlify confirms that the form was saved.
+        if (typeof window.fbq === "function") window.fbq("track", "Lead");
 
         form.reset();
         landing.hidden = true;
