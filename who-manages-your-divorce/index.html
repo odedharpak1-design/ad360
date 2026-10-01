@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta name="ad360-build" content="final-v6-2026-09-23">
+  <meta name="ad360-build" content="holiday-videos-2026-10-01">
   <meta name="theme-color" content="#103d32">
   <title>מה מנהל את הגירושין שלך? | AD ליווי 360</title>
   <meta name="description" content="מסלול אישי־רגשי לנשים השוקלות פרידה או נמצאות בתהליך גירושין. מפת 360 לצעד הבא ושיחת היכרות אישית ודיסקרטית.">
@@ -279,6 +279,13 @@
       font-weight: 600;
     }
 
+    .videos-section { background: var(--paper); }
+    .videos-title { margin-bottom: 14px; color: var(--forest-800); font-size: clamp(2rem, 4vw, 3rem); text-align: center; }
+    .videos-intro { margin: 0 auto; max-width: 760px; font-size: clamp(1.2rem, 2.3vw, 1.55rem); font-weight: 600; line-height: 1.6; text-align: center; }
+    .videos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start; }
+    .video-card { min-width: 0; margin: 0; padding: 12px; border: 1px solid var(--line); border-radius: 22px; background: white; box-shadow: var(--shadow); }
+    .video-card video { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: contain; border-radius: 14px; background: var(--forest-950); }
+    .video-card figcaption { padding: 12px 8px 3px; color: var(--forest-800); text-align: center; font-weight: 700; }
     .map-section { background: var(--sand); }
     .section-head { max-width: 760px; margin: 0 auto 46px; text-align: center; }
     .map-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 36px; align-items: stretch; }
@@ -522,6 +529,7 @@
       .map-result { min-height: 310px; }
       .about-photo { min-height: 560px; }
       .plans-foot { grid-template-columns: 1fr; }
+      .videos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .plan-card.featured { transform: none; }
     }
 
@@ -541,6 +549,7 @@
       .map-layout { gap: 12px; }
       .map-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
       .plan-grid { grid-template-columns: 1fr; }
+      .videos-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
       .map-card { min-height: 0; padding: 13px 12px; border-radius: 17px; }
       .map-index { width: 29px; height: 29px; margin-bottom: 8px; font-size: .68rem; }
       .map-card h3 { margin-bottom: 4px; font-size: .98rem; }
@@ -619,6 +628,38 @@
           <p>הכעס משפיע על הדרך שבה מגיבים,<br>הפחד מקשה לראות את האפשרויות,<br>והכאב עלול להפוך החלטות למבלבלות יותר.</p>
           <div class="bridge-highlight">כשאת מבינה טוב יותר מה מפעיל אותך, אפשר לראות מה דורש תשומת לב עכשיו, מה מצריך בירור מקצועי, מה יכול להמתין — והכי חשוב, מהן ההחלטות הנכונות עבורך.</div>
           <p style="margin-top:26px">במסלול הליווי האישי הייחודי של AD ליווי 360 ניתן מקום למה שעובר עלייך, נעשה יחד סדר ונבחן כיצד הדברים באים לידי ביטוי בחלקים השונים של התהליך.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section videos-section" aria-labelledby="videos-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="videos-title" id="videos-title">רגע לפני מפת 360</h2>
+          <p class="videos-intro">צפי בשלושת הסרטונים, ואז המשיכי למפה כדי לראות מה הצעד הבא שלך.</p>
+        </div>
+        <div class="videos-grid">
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="ad360-video-1.jpg" aria-label="סרטון ראשון של אלינה">
+              <source src="ad360-video-1.mp4" type="video/mp4">
+              הדפדפן שלך אינו תומך בניגון הסרטון.
+            </video>
+            <figcaption>סרטון 1</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="ad360-video-2.jpg" aria-label="סרטון שני של אלינה">
+              <source src="ad360-video-2.mp4" type="video/mp4">
+              הדפדפן שלך אינו תומך בניגון הסרטון.
+            </video>
+            <figcaption>סרטון 2</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="ad360-video-3.jpg" aria-label="סרטון שלישי של אלינה">
+              <source src="ad360-video-3.mp4" type="video/mp4">
+              הדפדפן שלך אינו תומך בניגון הסרטון.
+            </video>
+            <figcaption>סרטון 3</figcaption>
+          </figure>
         </div>
       </div>
     </section>
