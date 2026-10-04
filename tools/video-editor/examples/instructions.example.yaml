@@ -1,0 +1,58 @@
+# Instructions for the ad360_video tool. Every section is optional.
+# Times in this file always refer to the FINAL video (after the pauses are cut).
+
+video:
+  # width: 1080          # default: the size of the first clip
+  # height: 1920
+  # fps: 30
+  crf: 18                # quality (lower = better/larger)
+  fonts_dir: fonts       # folder with .ttf files, e.g. Heebo-Bold.ttf (relative to this file)
+
+cuts:
+  max_pause: 0.30        # pauses longer than this (seconds) are shortened
+  keep_pause: 0.12       # how much of a long pause to keep (natural rhythm)
+  padding: 0.08          # kept before/after every phrase so words aren't clipped
+  remove_fillers: true   # remove "אממ", "אה"...
+  mode: words            # words (by transcript) | silence (by audio level)
+
+captions:
+  max_words: 6
+  max_syllables: 20
+  font: Heebo
+  # font_size: 70        # default: automatic
+  color: "#FFFFFF"
+  outline_color: "#000000"
+  position: bottom       # bottom | middle | top
+  # box: true            # text on a semi-transparent box
+  # box_color: "#000000A0"
+
+images:
+  # Logo from the moment "המשרד שלנו" is said until the end of "כל הדרך"
+  - file: logo.png
+    from: "המשרד שלנו"
+    to: "כל הדרך"
+    position: top-right      # top-left/top/top-right/left/center/right/bottom-left/bottom/bottom-right
+    width: 0.30              # 30% of the video width (or pixels if > 1)
+    fade: 0.3
+
+  # An image over the exact span of a phrase, kept 0.5s longer
+  - file: logo.png
+    words: "חלוקת רכוש בגירושין"
+    tail: 0.5
+    position: {x: 0.5, y: 0.35}   # centre of the image, relative to the frame
+    width: 0.6
+
+texts:
+  - text: "ייעוץ ראשוני ללא עלות"
+    words: "דירה משותפת"
+    duration: 2.5              # from the phrase start, 2.5 seconds
+    position: {x: 0.5, y: 0.25}
+    font_size: 0.055           # 5.5% of the video height
+    color: "#FFD400"
+    box: true
+    box_color: "#000000B0"
+
+  - text: "פרק 2"
+    clip: 2                    # the whole second input clip
+    position: למעלה משמאל      # Hebrew position names work too
+    font_size: 48

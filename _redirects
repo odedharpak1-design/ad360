@@ -3,3 +3,4 @@
 /start    /start.html    200
 /privacy-policy    /privacy-policy.html    200
 /terms-of-use    /terms-of-use.html    200
+/tools/*        /404.html       404!
