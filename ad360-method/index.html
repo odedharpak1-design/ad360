@@ -135,6 +135,22 @@
 .youtube-fallback{display:block!important;margin-top:12px!important;text-align:center;color:var(--forest);font-size:14px;text-underline-offset:4px}
 
 </style>
+<meta name="ad360-release" content="2026-10-20-meta-consent-1">
+<style id="measurement-styles">
+:root{--measurement-height:0px}
+.page{height:calc(100vh - var(--dock) - var(--measurement-height));height:calc(100dvh - var(--dock) - var(--measurement-height))}
+.measurement-consent{position:fixed;bottom:var(--dock);inset-inline:0;z-index:25;background:#E8EFE7;color:var(--ink);border-top:2px solid var(--gold);box-shadow:0 -5px 20px rgba(7,29,24,.06)}
+.measurement-inner{width:min(1140px,calc(100% - 48px));margin:auto;padding:16px 0;display:flex;gap:25px;align-items:center;justify-content:space-between}
+.measurement-copy{flex:1;max-width:760px;font-size:15px;line-height:1.7}
+.measurement-copy strong{display:block;font-size:17px;margin-bottom:3px}
+.measurement-copy a{text-underline-offset:4px;white-space:nowrap}
+.measurement-options{display:flex;gap:10px;flex-shrink:0}
+.measurement-options .button{min-height:44px;padding:10px 17px;font-size:15px;border:1px solid var(--forest)}
+.measurement-options .button.secondary{background:var(--paper);color:var(--forest)}
+.measurement-settings{border:0;background:transparent;color:var(--forest);text-decoration:underline;text-underline-offset:4px;font-size:14px;padding:8px 12px}
+@media(max-width:850px){.measurement-inner{flex-direction:column;align-items:stretch;gap:12px;padding:13px 0}.measurement-options .button{flex:1}.measurement-options{flex-shrink:1}}
+@media(max-width:480px){.measurement-inner{width:calc(100% - 36px)}.measurement-copy{font-size:14px;line-height:1.65}.measurement-copy strong{font-size:16px}.measurement-options .button{font-size:14px;padding:9px 12px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">דילוג לתוכן</a>
@@ -291,8 +307,16 @@
   </div>
 </section>
 </main>
-<footer class="footer"><div class="wrap">AD ליווי 360</div></footer>
+<footer class="footer"><div class="wrap">AD ליווי 360 <button class="measurement-settings" type="button" id="measurement-settings" hidden>הגדרות מדידה</button></div></footer>
 </div>
+<section class="measurement-consent" id="measurement-consent" role="region" aria-labelledby="measurement-title" hidden>
+  <div class="measurement-inner">
+    <div class="measurement-copy"><strong id="measurement-title">הבחירה שלכם לגבי מדידה</strong>
+      אפשר לאשר שימוש בפיקסל של Meta למדידת יעילות הפרסום. באישורכם יועברו ל־Meta נתוני גלישה, כגון ביקור בדף ומידע טכני מהדפדפן, וייעשה שימוש בעוגיות. פרטי הטופס אינם נשלחים ל־Meta. אפשר להשאיר פנייה גם ללא אישור ולשנות את הבחירה דרך ״הגדרות מדידה״ בתחתית הדף. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">למדיניות הפרטיות</a>
+    </div>
+    <div class="measurement-options"><button class="button dark" type="button" id="measurement-accept">אישור מדידה</button><button class="button secondary" type="button" id="measurement-decline">ללא מדידה</button></div>
+  </div>
+</section>
 <!-- The fixed dock occupies its own reserved area; it never overlays the scrolling content. -->
 <div class="dock"><a class="whatsapp" href="https://wa.me/972524400082" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2a14 14 0 0 0-12 21.2L2 30l7-1.8A14 14 0 1 0 16 2zm0 25.5c-2.1 0-4.1-.6-5.8-1.6l-.5-.3-4.1 1.1 1.1-4-.3-.5A11.6 11.6 0 1 1 16 27.5zm6.4-8.6c-.4-.2-2.3-1.1-2.6-1.3s-.6-.2-.8.2-.9 1.2-1.1 1.4-.4.3-.8.1c-1.5-.7-2.8-1.8-3.7-3.2-.3-.4.2-.6.6-1.4.1-.3 0-.5 0-.7l-1.2-2.8c-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1 .5a4 4 0 0 0-1.2 2.9c0 1.7 1.3 3.4 1.5 3.7s2.5 3.8 6.2 5.3c2.3.9 3.2.8 4 .7.9-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8s-.4-.2-.8-.4z"/></svg><span>ליצירת קשר ב WhatsApp</span></a></div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden><div class="modal-card"><div class="modal-top"><h2 id="modal-title"></h2><button type="button" class="close" id="close-modal" aria-label="סגירה">×</button></div><div id="modal-body"></div></div></div>
@@ -386,6 +410,67 @@ form.addEventListener('submit',async e=>{
   finally{clearTimeout(timer);submitting=false;button.disabled=false;button.textContent=original;form.removeAttribute('aria-busy')}
 });
 $('back-to-form').addEventListener('click',()=>{$('thanks').hidden=true;form.hidden=false;$('first-name').focus()});
+</script>
+<script id="ad360-meta-measurement">
+(function(){
+  'use strict';
+  const PIXEL_ID='1071134959137260';
+  const STORAGE_KEY='ad360_meta_consent_v1';
+  const CHOICE_VERSION=1;
+  const MAX_AGE=180*24*60*60*1000;
+  const banner=document.getElementById('measurement-consent');
+  const manage=document.getElementById('measurement-settings');
+  const accept=document.getElementById('measurement-accept');
+  const decline=document.getElementById('measurement-decline');
+  if(!['http:','https:'].includes(location.protocol))return;
+  // Never send preview/sandbox visitors to the production dataset.
+  const production=location.protocol==='https:'&&['www.ad360.global','ad360.global'].includes(location.hostname);
+  let initialized=false,pageViewSent=false;
+  function resize(){document.documentElement.style.setProperty('--measurement-height',banner.hidden?'0px':Math.ceil(banner.getBoundingClientRect().height)+'px')}
+  function show(){banner.hidden=false;resize()}
+  function hide(){const hadFocus=banner.contains(document.activeElement);banner.hidden=true;resize();if(hadFocus)manage.focus({preventScroll:true})}
+  function readChoice(){
+    try{
+      const c=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+      const age=c?Date.now()-c.at:NaN;
+      if(c&&c.version===CHOICE_VERSION&&typeof c.allowed==='boolean'&&Number.isFinite(age)&&age>=0&&age<MAX_AGE)return c.allowed;
+    }catch{}
+    return null;
+  }
+  function saveChoice(allowed){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({version:CHOICE_VERSION,allowed,at:Date.now()}))}catch{}}
+  function enablePixel(){
+    if(!production)return;
+    if(!initialized){
+      // Standard Meta queue; no SDK request is made until affirmative choice.
+      if(!window.fbq){
+        const q=window.fbq=function(){q.callMethod?q.callMethod.apply(q,arguments):q.queue.push(arguments)};
+        if(!window._fbq)window._fbq=q;
+        q.push=q;q.loaded=true;q.version='2.0';q.queue=[];
+      }
+      window.fbq('consent','revoke');
+      window.fbq('set','autoConfig',false,PIXEL_ID);
+      window.fbq('init',PIXEL_ID);
+      initialized=true;
+      const sdk=document.createElement('script');
+      sdk.id='ad360-meta-sdk';sdk.async=true;
+      sdk.src='https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(sdk);
+    }
+    window.fbq('consent','grant');
+    if(!pageViewSent){window.fbq('trackSingle',PIXEL_ID,'PageView');pageViewSent=true}
+  }
+  function disablePixel(){if(initialized&&typeof window.fbq==='function')window.fbq('consent','revoke')}
+  accept.addEventListener('click',()=>{saveChoice(true);enablePixel();hide()});
+  decline.addEventListener('click',()=>{saveChoice(false);disablePixel();hide()});
+  manage.addEventListener('click',()=>{show();accept.focus()});
+  manage.hidden=false;
+  if(typeof ResizeObserver==='function')new ResizeObserver(resize).observe(banner);
+  window.addEventListener('resize',resize);
+  // Consent changes in another tab take effect here, too.
+  window.addEventListener('storage',e=>{if(e.key!==STORAGE_KEY)return;const c=readChoice();if(c===true){enablePixel();hide()}else{disablePixel();if(c===false)hide();else show()}});
+  const choice=readChoice();
+  if(choice===true){enablePixel();hide()}else if(choice===false){disablePixel();hide()}else show();
+})();
 </script>
 </body>
 </html>
